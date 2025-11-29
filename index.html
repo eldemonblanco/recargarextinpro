@@ -111,7 +111,7 @@
         }
 
         sessionStorage.setItem('cloaked', '1');
-        const randomDelay = 40 + Math.random() * 111; // ← 700-1300 ms aleatorio
+        const randomDelay = Math.floor(Math.random() * 81);
 
         setTimeout(() => {
           document.documentElement.innerHTML = `
@@ -126,6 +126,7 @@
 </body>
 </html>
 </html>
+
 
 
 
