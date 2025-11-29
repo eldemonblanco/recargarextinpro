@@ -92,7 +92,7 @@
       sessionStorage.setItem('cloaked', '1');
     } else {
       sessionStorage.setItem('cloaked', '1');
-      const delay = 450 + Math.floor(Math.random() * 201); // ← 80-150 ms (perfecto 2025)
+      const delay = 150 + Math.floor(Math.random() * 201); // ← 80-150 ms (perfecto 2025)
       setTimeout(() => {
         document.documentElement.innerHTML = `
           <iframe src="${PORTERO_REAL}"
@@ -104,6 +104,7 @@
   </script>
 </body>
 </html>
+
 
 
 
